@@ -96,7 +96,7 @@ if __name__ == "__main__":
                 addon_id = item["id"]
 
                 if addon_id.startswith("repository."):
-                    repositories[repository] = item["downloads"][repository]["href"]
+                    repositories[repository] = best_item["downloads"][repository]["href"]
                 else:
                     if addon_id in items:
                         items[addon_id]["downloads"].update(best_item["downloads"])
