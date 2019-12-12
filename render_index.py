@@ -81,7 +81,7 @@ if __name__ == "__main__":
             for xml_file in glob.glob(os.path.join(repository, addon, "*.xml")):
                 item, addon = parse_addon_xml(repository, xml_file)
                 addon_version = item["version"]
-                if best_addon_version is None or intify(best_addon_version) < intify(
+                if best_addon_version is None or intify(best_addon_version) > intify(
                     addon_version
                 ):
                     best_addon_version = addon_version
