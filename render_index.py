@@ -73,23 +73,26 @@ if __name__ == "__main__":
         if not os.path.exists(repository):
             continue
 
+        print('Handling repository %s' % (repository, ))
         root = ElementTree.Element("addons")
 
         for addon in os.listdir(repository):
-            best_addon, best_addon_version, best_item = None, None, None
+            best_addon_data, best_addon_version, best_item = None, None, None
 
             for xml_file in glob.glob(os.path.join(repository, addon, "*.xml")):
-                item, addon = parse_addon_xml(repository, xml_file)
+                item, addon_data = parse_addon_xml(repository, xml_file)
                 addon_version = item["version"]
-                if best_addon_version is None or intify(best_addon_version) > intify(
+                print('Found version %s of %s' % (addon_version, addon))
+                if best_addon_version is None or intify(best_addon_version) < intify(
                     addon_version
                 ):
+                    print('Changing version for %s from %s to %s' % (addon, best_addon_version, addon_version))
                     best_addon_version = addon_version
-                    best_addon = addon
+                    best_addon_data = addon_data
                     best_item = item
 
-            if best_addon:
-                root.append(best_addon)
+            if best_addon_data:
+                root.append(best_addon_data)
                 addon_id = item["id"]
 
                 if addon_id.startswith("repository."):
