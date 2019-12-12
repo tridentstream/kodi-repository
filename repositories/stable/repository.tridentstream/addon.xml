@@ -3,7 +3,7 @@
         <extension point="xbmc.addon.repository" name="Tridentstream Addons">
                 <info compressed="false">https://kodi.tridentstream.org/stable/addons.xml</info>
                 <checksum>https://kodi.tridentstream.org/stable/addons.xml.md5</checksum>
-                <datadir zip="true">https://kodi.tridentstream.org/beta/</datadir>
+                <datadir zip="true">https://kodi.tridentstream.org/stable/</datadir>
         </extension>
         <extension point="xbmc.addon.metadata">
                 <summary>Install Tridentstream Addons</summary>
